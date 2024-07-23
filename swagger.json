@@ -1,0 +1,161 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "Screen API",
+      "version": "1.0.0",
+      "description": "API documentation for managing screens."
+    },
+    "paths": {
+      "/screens": {
+        "post": {
+          "summary": "Create a new screen",
+          "tags": ["Screens"],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Screen"
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Screen created successfully",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Screen"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Some server error"
+            }
+          }
+        },
+        "get": {
+          "summary": "Get all screens",
+          "tags": ["Screens"],
+          "responses": {
+            "200": {
+              "description": "List of all screens",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Screen"
+                    }
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Some server error"
+            }
+          }
+        }
+      },
+      "/screens/{id}": {
+        "get": {
+          "summary": "Get a single screen by ID",
+          "tags": ["Screens"],
+          "parameters": [
+            {
+              "in": "path",
+              "name": "id",
+              "schema": {
+                "type": "integer"
+              },
+              "required": true,
+              "description": "The screen ID"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Screen found",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Screen"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Screen not found"
+            },
+            "500": {
+              "description": "Some server error"
+            }
+          }
+        },
+        "put": {
+          "summary": "Update an existing screen",
+          "tags": ["Screens"],
+          "parameters": [
+            {
+              "in": "path",
+              "name": "id",
+              "schema": {
+                "type": "integer"
+              },
+              "required": true,
+              "description": "The screen ID"
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Screen"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Screen updated successfully",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Screen"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Screen not found"
+            },
+            "500": {
+              "description": "Some server error"
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "Screen": {
+          "type": "object",
+          "required": ["paringCode", "screenId", "status"],
+          "properties": {
+            "paringCode": {
+              "type": "string"
+            },
+            "screenId": {
+              "type": "string"
+            },
+            "status": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    }
+  }
+  

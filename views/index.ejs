@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Screens List</title>
+</head>
+<body>
+  <h1>Screens List</h1>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Paring Code</th>
+        <th>Screen ID</th>
+        <th>Status</th>
+        <th>Created At</th>
+        <th>Updated At</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% screens.forEach(screen => { %>
+        <tr>
+          <td><%= screen.id %></td>
+          <td><%= screen.paringcode %></td>
+          <td><%= screen.screenid %></td>
+          <td><%= screen.status %></td>
+          <td><%= screen.created_at %></td>
+          <td><%= screen.updated_at %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</body>
+</html>
